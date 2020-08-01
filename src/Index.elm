@@ -7,9 +7,9 @@ module Index exposing
     , toInt
     , fromInt
     , toString
+    , map
     , compare
     , zero
-    , map
     , decode
     , encode
     )
@@ -35,9 +35,9 @@ module Index exposing
 @docs toInt
 @docs fromInt
 @docs toString
+@docs map
 @docs compare
 @docs zero
-@docs map
 
 
 # Json
@@ -128,7 +128,7 @@ zero =
     Index 0
 
 
-{-| Turn `indexedMap` provided by another package to one that uses `Index a` instead of `Int`.
+{-| Turn an `indexedMap` function provided by another package to one that uses `Index a` instead of `Int`.
 
     list : (Index a -> b -> c) -> List b -> List c
     list =
@@ -168,7 +168,7 @@ withIndex f (Index i) =
     f i
 
 
-{-| Turn any function that takes two `Int`s as its first argument into a function that takes `Index a`.
+{-| Like `withIndex` but with two `Int`s
 
     reorderable : Index a -> Index a -> Reorderable b -> Reorderable b
     reorderable =
