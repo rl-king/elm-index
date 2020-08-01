@@ -1,7 +1,7 @@
 {
     "type": "package",
     "name": "rl-king/elm-index",
-    "summary": "An Index type with some helpers",
+    "summary": "A taggable wrapper around Int",
     "license": "BSD-3-Clause",
     "version": "1.0.0",
     "exposed-modules": [
