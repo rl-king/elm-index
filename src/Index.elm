@@ -1,6 +1,7 @@
 module Index exposing
     ( Index
     , withIndex
+    , withIndex2
     , indexedMap
     , range
     , toInt
@@ -24,6 +25,7 @@ module Index exposing
 # Use
 
 @docs withIndex
+@docs withIndex2
 @docs indexedMap
 @docs range
 
@@ -164,3 +166,15 @@ indexedMap f g =
 withIndex : (Int -> b) -> Index a -> b
 withIndex f (Index i) =
     f i
+
+
+{-| Turn any function that takes two `Int`s as its first argument into a function that takes `Index a`.
+
+    reorderable : Index a -> Index a -> Reorderable b -> Reorderable b
+    reorderable =
+        Index.withIndex2 Reorderable.swap
+
+-}
+withIndex2 : (Int -> Int -> b) -> Index a -> Index a -> b
+withIndex2 f =
+    withIndex << withIndex f
