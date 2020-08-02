@@ -1,6 +1,6 @@
 # elm-index
 
-Tag `Index a`.
+Disambiguate between different `Index` types by taggging `Index a`.
 
 ``` elm
 -- With an anonymous record.
@@ -15,7 +15,7 @@ type BlockContent
 type alias BlockIndex =
     Index BlockContent
 
--- Or, if you've got just one Index.
+-- Or, if you don't want to write `Index a` everywhere.
 type alias Index =
     Index ()
 
@@ -29,6 +29,12 @@ example =
     Index.indexedMap List.indexedMap
         Tuple.pair
         ["hallo", "hola", "hello"]
+
+example : Array ( Index { example : () }, Int )
+example =
+    Index.indexedMap Array.indexedMap
+        Tuple.pair
+        (Array.fromList [1, 2, 3])
 ```
 
 
